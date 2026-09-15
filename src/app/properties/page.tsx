@@ -13,10 +13,20 @@ function PropertiesContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  const initialLocation = searchParams.get("location");
+  const normalizedLocation = initialLocation 
+    ? locations.find(l => l.toLowerCase() === initialLocation.toLowerCase()) || "All"
+    : "All";
+    
+  const initialType = searchParams.get("type");
+  const normalizedType = initialType
+    ? propertyTypes.find(t => t.toLowerCase() === initialType.toLowerCase()) || "All"
+    : "All";
+
   // Initialize state from URL params or defaults
   const [searchTerm, setSearchTerm] = useState(searchParams.get("q") || "");
-  const [selectedLocation, setSelectedLocation] = useState(searchParams.get("location") || "All");
-  const [selectedType, setSelectedType] = useState(searchParams.get("type") || "All");
+  const [selectedLocation, setSelectedLocation] = useState(normalizedLocation);
+  const [selectedType, setSelectedType] = useState(normalizedType);
   const [selectedPrice, setSelectedPrice] = useState(searchParams.get("price") || "All");
   const [selectedBeds, setSelectedBeds] = useState(searchParams.get("beds") || "All");
   const [sortBy, setSortBy] = useState(searchParams.get("sort") || "Featured");
@@ -41,8 +51,8 @@ function PropertiesContent() {
     return properties.filter(p => {
       const matchSearch = p.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           p.location.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchLocation = selectedLocation === "All" || p.location.includes(selectedLocation);
-      const matchType = selectedType === "All" || p.type === selectedType;
+      const matchLocation = selectedLocation === "All" || p.location.toLowerCase().includes(selectedLocation.toLowerCase());
+      const matchType = selectedType === "All" || p.type.toLowerCase() === selectedType.toLowerCase();
       
       let matchPrice = true;
       if (selectedPrice !== "All") {
