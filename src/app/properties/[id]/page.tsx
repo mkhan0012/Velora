@@ -145,12 +145,21 @@ export default function PropertyDetail() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
           <button 
-            onClick={() => setIsViewingModalOpen(true)}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsViewingModalOpen(true);
+            }}
             className="bg-charcoal text-white px-8 py-4 text-xs uppercase tracking-widest hover:bg-bronze transition-colors flex-1 sm:flex-none text-center"
           >
             Schedule a Private Viewing →
           </button>
-          <button className="border border-stone text-charcoal px-8 py-4 text-xs uppercase tracking-widest hover:border-charcoal transition-colors flex-1 sm:flex-none text-center">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              setIsViewingModalOpen(true);
+            }}
+            className="border border-stone text-charcoal px-8 py-4 text-xs uppercase tracking-widest hover:border-charcoal transition-colors flex-1 sm:flex-none text-center"
+          >
             Enquire About This Residence
           </button>
         </div>
