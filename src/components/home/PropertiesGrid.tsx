@@ -75,10 +75,14 @@ export default function PropertiesGrid() {
                     <p className="text-[10px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-4">{property.location}</p>
                     
                     <div className="flex items-center gap-3 text-[9px] text-charcoal/70 font-bold tracking-[0.2em] mb-5 uppercase">
-                      <span>{property.bedrooms} Beds</span>
-                      <span className="w-[3px] h-[3px] rounded-full bg-charcoal/20" />
-                      <span>{property.bathrooms} Baths</span>
-                      <span className="w-[3px] h-[3px] rounded-full bg-charcoal/20" />
+                      {property.type !== 'Plot' && (
+                        <>
+                          <span>{property.bedrooms} Beds</span>
+                          <span className="w-[3px] h-[3px] rounded-full bg-charcoal/20" />
+                          <span>{property.bathrooms} Baths</span>
+                          <span className="w-[3px] h-[3px] rounded-full bg-charcoal/20" />
+                        </>
+                      )}
                       <span>{property.area}</span>
                     </div>
                     <span className="font-sans text-[16px] font-semibold tracking-wide text-charcoal">{property.price}</span>

@@ -7,6 +7,11 @@ import Image from "next/image";
 
 const locationData = [
   {
+    name: "HYDERABAD",
+    desc: "The city of pearls and modern tech.",
+    img: "https://images.unsplash.com/photo-1588694086604-032a26532cc2?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
     name: "MUMBAI",
     desc: "The energy of the city.",
     img: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?q=80&w=1965&auto=format&fit=crop"
@@ -20,11 +25,6 @@ const locationData = [
     name: "DELHI",
     desc: "Where heritage meets modernity.",
     img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    name: "BENGALURU",
-    desc: "The new urban lifestyle.",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
   }
 ];
 

@@ -16,6 +16,60 @@ export interface Property {
 
 export const properties: Property[] = [
   {
+    id: "jubilee-hills-plot",
+    title: "Premium Plot in Jubilee Hills",
+    location: "Hyderabad",
+    price: "₹15.00 Cr",
+    priceValue: 150000000,
+    bedrooms: 0,
+    bathrooms: 0,
+    area: "1,200 sq.yards",
+    type: "Plot",
+    featured: true,
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2064&auto=format&fit=crop",
+    images: []
+  },
+  {
+    id: "banjara-hills-house",
+    title: "Modern House in Banjara Hills",
+    location: "Hyderabad",
+    price: "₹12.50 Cr",
+    priceValue: 125000000,
+    bedrooms: 5,
+    bathrooms: 6,
+    area: "6,000 sq.ft",
+    type: "House",
+    new: true,
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop",
+    images: []
+  },
+  {
+    id: "gachibowli-plot",
+    title: "Commercial/Residential Plot Gachibowli",
+    location: "Hyderabad",
+    price: "₹8.20 Cr",
+    priceValue: 82000000,
+    bedrooms: 0,
+    bathrooms: 0,
+    area: "800 sq.yards",
+    type: "Plot",
+    image: "https://images.unsplash.com/photo-1524813686514-a57563d77965?q=80&w=2064&auto=format&fit=crop",
+    images: []
+  },
+  {
+    id: "hitec-city-villa",
+    title: "Luxury House HITEC City",
+    location: "Hyderabad",
+    price: "₹10.75 Cr",
+    priceValue: 107500000,
+    bedrooms: 4,
+    bathrooms: 5,
+    area: "5,200 sq.ft",
+    type: "House",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop",
+    images: []
+  },
+  {
     id: "villa-no-07",
     title: "Villa No. 07",
     location: "Alibaug, Maharashtra",
@@ -101,8 +155,8 @@ export const properties: Property[] = [
   }
 ];
 
-export const locations = ["All", "Mumbai", "Goa", "Alibaug", "Delhi", "Bengaluru", "Hyderabad"];
-export const propertyTypes = ["All", "Villa", "Apartment", "Penthouse", "Plot", "Estate"];
+export const locations = ["All", "Hyderabad", "Mumbai", "Goa", "Alibaug", "Delhi", "Bengaluru"];
+export const propertyTypes = ["All", "Plot", "House", "Villa", "Apartment", "Penthouse", "Estate"];
 export const priceRanges = [
   { label: "All", min: 0, max: Infinity },
   { label: "Under ₹5 Cr", min: 0, max: 50000000 },

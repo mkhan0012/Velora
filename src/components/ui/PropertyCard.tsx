@@ -44,10 +44,14 @@ export default function PropertyCard({ property, className = "" }: { property: P
             <h3 className="font-display text-2xl mb-1">{property.title}</h3>
             <p className="text-sm text-warm-gray uppercase tracking-wider mb-3">{property.location}</p>
             <div className="flex items-center gap-4 text-xs text-charcoal/80">
-              <span>{property.bedrooms} Beds</span>
-              <span className="w-[3px] h-[3px] rounded-full bg-bronze/50" />
-              <span>{property.bathrooms} Baths</span>
-              <span className="w-[3px] h-[3px] rounded-full bg-bronze/50" />
+              {property.type !== 'Plot' && (
+                <>
+                  <span>{property.bedrooms} Beds</span>
+                  <span className="w-[3px] h-[3px] rounded-full bg-bronze/50" />
+                  <span>{property.bathrooms} Baths</span>
+                  <span className="w-[3px] h-[3px] rounded-full bg-bronze/50" />
+                </>
+              )}
               <span>{property.area}</span>
             </div>
           </div>

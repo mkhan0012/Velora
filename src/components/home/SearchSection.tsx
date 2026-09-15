@@ -94,10 +94,11 @@ export default function SearchSection() {
               <div className="text-[9px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-3">Property Type</div>
               <select name="type" className="bg-transparent border-none outline-none text-[15px] font-medium text-charcoal cursor-pointer appearance-none">
                 <option>Any type</option>
+                <option>Plot</option>
+                <option>House</option>
                 <option>Villa</option>
                 <option>Apartment</option>
                 <option>Penthouse</option>
-                <option>Plot</option>
                 <option>Estate</option>
               </select>
             </div>

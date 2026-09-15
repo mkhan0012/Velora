@@ -127,10 +127,14 @@ export default function PropertyDetail() {
           <div className="flex flex-col items-start md:items-end gap-6">
             <div className="font-display text-4xl">{property.price}</div>
             <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-widest text-charcoal/80">
-              <span>{property.bedrooms} Beds</span>
-              <span className="w-1 h-1 rounded-full bg-bronze" />
-              <span>{property.bathrooms} Baths</span>
-              <span className="w-1 h-1 rounded-full bg-bronze" />
+              {property.type !== 'Plot' && (
+                <>
+                  <span>{property.bedrooms} Beds</span>
+                  <span className="w-1 h-1 rounded-full bg-bronze" />
+                  <span>{property.bathrooms} Baths</span>
+                  <span className="w-1 h-1 rounded-full bg-bronze" />
+                </>
+              )}
               <span>{property.area}</span>
             </div>
           </div>
@@ -195,14 +199,18 @@ export default function PropertyDetail() {
                 <span className="text-sm font-light">Property Type</span>
                 <span className="font-medium text-sm">{property.type}</span>
               </li>
-              <li className="flex justify-between border-b border-stone/50 pb-4">
-                <span className="text-sm font-light">Bedrooms</span>
-                <span className="font-medium text-sm">{property.bedrooms}</span>
-              </li>
-              <li className="flex justify-between border-b border-stone/50 pb-4">
-                <span className="text-sm font-light">Bathrooms</span>
-                <span className="font-medium text-sm">{property.bathrooms}</span>
-              </li>
+              {property.type !== 'Plot' && (
+                <>
+                  <li className="flex justify-between border-b border-stone/50 pb-4">
+                    <span className="text-sm font-light">Bedrooms</span>
+                    <span className="font-medium text-sm">{property.bedrooms}</span>
+                  </li>
+                  <li className="flex justify-between border-b border-stone/50 pb-4">
+                    <span className="text-sm font-light">Bathrooms</span>
+                    <span className="font-medium text-sm">{property.bathrooms}</span>
+                  </li>
+                </>
+              )}
               <li className="flex justify-between border-b border-stone/50 pb-4">
                 <span className="text-sm font-light">Internal Area</span>
                 <span className="font-medium text-sm">{property.area}</span>

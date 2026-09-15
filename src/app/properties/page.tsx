@@ -15,8 +15,8 @@ function PropertiesContent() {
 
   const initialLocation = searchParams.get("location");
   const normalizedLocation = initialLocation 
-    ? locations.find(l => l.toLowerCase() === initialLocation.toLowerCase()) || "All"
-    : "All";
+    ? locations.find(l => l.toLowerCase() === initialLocation.toLowerCase()) || "Hyderabad"
+    : "Hyderabad";
     
   const initialType = searchParams.get("type");
   const normalizedType = initialType
@@ -37,7 +37,7 @@ function PropertiesContent() {
   useEffect(() => {
     const params = new URLSearchParams();
     if (searchTerm) params.set("q", searchTerm);
-    if (selectedLocation !== "All") params.set("location", selectedLocation);
+    if (selectedLocation !== "Hyderabad") params.set("location", selectedLocation);
     if (selectedType !== "All") params.set("type", selectedType);
     if (selectedPrice !== "All") params.set("price", selectedPrice);
     if (selectedBeds !== "All") params.set("beds", selectedBeds);
@@ -79,7 +79,7 @@ function PropertiesContent() {
 
   const clearFilters = () => {
     setSearchTerm("");
-    setSelectedLocation("All");
+    setSelectedLocation("Hyderabad");
     setSelectedType("All");
     setSelectedPrice("All");
     setSelectedBeds("All");
@@ -87,7 +87,7 @@ function PropertiesContent() {
   };
 
   const activeFiltersCount = [
-    selectedLocation !== "All",
+    selectedLocation !== "Hyderabad",
     selectedType !== "All",
     selectedPrice !== "All",
     selectedBeds !== "All"
