@@ -77,9 +77,9 @@ export default function Hero() {
 
       <div className="container relative z-20 mx-auto px-6 md:px-12 w-full h-full flex flex-col justify-center">
         
-        <div className="flex flex-col lg:flex-row justify-between items-end w-full h-full pb-20">
+        <div className="flex flex-col lg:flex-row justify-between items-end w-full h-full pb-32 pt-32">
           
-          <div className="w-full lg:w-1/2 flex flex-col items-start text-white pt-40">
+          <div className="w-full lg:w-1/2 flex flex-col items-start text-white">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -164,8 +164,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.2 }}
-          className="absolute bottom-10 left-6 md:left-12 flex items-center gap-5"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         >
+          <span className="text-[9px] uppercase tracking-[0.4em] text-ivory/50">Scroll</span>
           <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
             <motion.div 
               className="absolute top-0 left-0 w-full bg-bronze h-full origin-top"
@@ -174,7 +175,6 @@ export default function Hero() {
               transition={{ repeat: Infinity, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             />
           </div>
-          <span className="text-[9px] uppercase tracking-[0.3em] text-ivory/50 rotate-180" style={{ writingMode: 'vertical-rl' }}>Scroll</span>
         </motion.div>
       </div>
     </div>
