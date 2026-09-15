@@ -143,25 +143,23 @@ export default function PropertyDetail() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 mb-12 relative z-10">
           <button 
+            type="button"
             onClick={(e) => {
               e.preventDefault();
               setIsViewingModalOpen(true);
             }}
-            className="bg-charcoal text-white px-8 py-4 text-xs uppercase tracking-widest hover:bg-bronze transition-colors flex-1 sm:flex-none text-center"
+            className="bg-charcoal text-white px-8 py-4 text-xs uppercase tracking-widest hover:bg-bronze transition-colors flex-1 sm:flex-none text-center cursor-pointer"
           >
             Schedule a Private Viewing →
           </button>
-          <button 
-            onClick={(e) => {
-              e.preventDefault();
-              setIsViewingModalOpen(true);
-            }}
-            className="border border-stone text-charcoal px-8 py-4 text-xs uppercase tracking-widest hover:border-charcoal transition-colors flex-1 sm:flex-none text-center"
+          <Link 
+            href="/contact"
+            className="border border-stone text-charcoal px-8 py-4 text-xs uppercase tracking-widest hover:border-charcoal transition-colors flex-1 sm:flex-none text-center cursor-pointer inline-block"
           >
             Enquire About This Residence
-          </button>
+          </Link>
         </div>
 
         {/* Image Gallery Header */}
