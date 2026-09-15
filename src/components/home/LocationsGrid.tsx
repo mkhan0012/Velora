@@ -9,7 +9,7 @@ const locationData = [
   {
     name: "HYDERABAD",
     desc: "The city of pearls and modern tech.",
-    img: "https://images.unsplash.com/photo-1588694086604-032a26532cc2?q=80&w=2070&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1696941515998-d83f24967aca?q=80&w=2070&auto=format&fit=crop"
   },
   {
     name: "MUMBAI",

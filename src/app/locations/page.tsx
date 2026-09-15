@@ -40,7 +40,7 @@ const locationData = [
     name: "Hyderabad",
     desc: "Modern palaces and hilltop residences overlooking the city.",
     count: 7,
-    img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+    img: "https://images.unsplash.com/photo-1696941515998-d83f24967aca?q=80&w=2070&auto=format&fit=crop"
   }
 ];
 
