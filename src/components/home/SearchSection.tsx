@@ -9,18 +9,22 @@ export default function SearchSection() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"buy" | "rent">("buy");
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push("/properties");
+  };
+
   return (
     <section className="py-24 md:py-32 bg-ivory relative border-b border-charcoal/10">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-14">
           <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-8 h-[1px] bg-charcoal/30"></div>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-charcoal/60 font-semibold block">Discover</span>
+            <div className="mb-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-bronze font-bold block">Discover</span>
             </div>
             <h2 className="font-display text-5xl md:text-[4.5rem] font-light text-charcoal tracking-tighter leading-none">
-              Find a <span className="italic text-charcoal/80">place</span><br />that feels like you.
+              Find a <span className="italic font-normal text-charcoal/80">place</span><br />that feels like you.
             </h2>
           </div>
           

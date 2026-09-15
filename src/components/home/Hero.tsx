@@ -45,7 +45,7 @@ export default function Hero() {
   return (
     <div 
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-deep-charcoal flex items-center"
+      className="relative h-screen w-full overflow-hidden bg-[#111] flex items-center"
     >
       <motion.div 
         style={{ y, opacity, scale }}
@@ -71,8 +71,8 @@ export default function Hero() {
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/90 via-charcoal/30 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/90 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent z-10" />
       </motion.div>
 
       <div className="container relative z-20 mx-auto px-6 md:px-12 w-full h-full flex flex-col justify-center">
@@ -84,10 +84,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-4 mb-8"
+              className="mb-8"
             >
-              <div className="w-8 h-[1px] bg-bronze"></div>
-              <span className="text-[9px] uppercase tracking-[0.3em] font-semibold text-ivory/80">
+              <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-bronze">
                 Velora Estates
               </span>
             </motion.div>
@@ -96,10 +95,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-6xl md:text-8xl lg:text-[6.5rem] font-light leading-[0.95] mb-8 tracking-tighter"
+              className="font-display text-6xl md:text-8xl lg:text-[7rem] font-light leading-[0.95] mb-8 tracking-tighter"
             >
               Spaces that<br />
-              <span className="italic text-ivory/90">speak</span> for<br />
+              <span className="italic font-normal text-white/95">speak</span> for<br />
               themselves.
             </motion.h1>
             
@@ -107,7 +106,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="text-ivory/80 max-w-sm text-[13px] font-light leading-relaxed mb-12 tracking-wide"
+              className="text-ivory/70 max-w-sm text-[14px] font-light leading-relaxed mb-12 tracking-wide"
             >
               Curating exceptional residences for those who appreciate architecture, place and possibility.
             </motion.p>
@@ -120,10 +119,10 @@ export default function Hero() {
             >
               <Link 
                 href="/properties" 
-                className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 text-[10px] uppercase tracking-[0.2em] transition-all duration-500 hover:bg-white hover:text-charcoal flex items-center justify-center gap-4 w-full sm:w-auto"
+                className="group relative overflow-hidden bg-bronze border border-bronze text-white px-12 py-5 text-[10px] uppercase tracking-[0.25em] transition-all duration-500 hover:bg-white hover:border-white hover:text-charcoal flex items-center justify-center gap-4 w-full sm:w-auto"
               >
-                <span className="relative z-10 font-semibold">Explore Residences</span>
-                <ArrowRight size={14} className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-500" />
+                <span className="relative z-10 font-bold">Explore Residences</span>
+                <ArrowRight size={14} className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-500" strokeWidth={2} />
               </Link>
             </motion.div>
           </div>
@@ -135,26 +134,26 @@ export default function Hero() {
             className="hidden lg:flex flex-col items-end text-white text-right"
           >
             <div className="flex flex-col gap-3 mb-8">
-              <span className="text-[9px] uppercase tracking-[0.2em] text-ivory/60 font-medium">Curated Residences</span>
-              <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-ivory/90">Mumbai · Goa · Delhi · Bengaluru</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-bronze font-medium">Curated Portfolio</span>
+              <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-ivory/80">Mumbai · Goa · Delhi · Bengaluru</span>
             </div>
             
-            <div className="flex items-center gap-6 border-t border-white/20 pt-6 w-72 justify-end">
-              <div className="text-[10px] font-medium tracking-[0.2em] mr-auto text-ivory/60">
+            <div className="flex items-center gap-6 border-t border-white/10 pt-6 w-72 justify-end">
+              <div className="text-[10px] font-medium tracking-[0.2em] mr-auto text-ivory/50">
                 0{currentIndex + 1} &mdash; 0{heroImages.length}
               </div>
               <div className="flex gap-3">
                 <MagneticButton 
                   onClick={handlePrev}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal transition-all duration-500 z-20 backdrop-blur-sm bg-white/5"
+                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal hover:border-white transition-all duration-500 z-20 backdrop-blur-sm bg-white/5"
                 >
-                  <ArrowLeft size={14} strokeWidth={1.5} />
+                  <ArrowLeft size={16} strokeWidth={1.5} />
                 </MagneticButton>
                 <MagneticButton 
                   onClick={handleNext}
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal transition-all duration-500 z-20 backdrop-blur-sm bg-white/5"
+                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal hover:border-white transition-all duration-500 z-20 backdrop-blur-sm bg-white/5"
                 >
-                  <ArrowRight size={14} strokeWidth={1.5} />
+                  <ArrowRight size={16} strokeWidth={1.5} />
                 </MagneticButton>
               </div>
             </div>
@@ -169,13 +168,13 @@ export default function Hero() {
         >
           <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
             <motion.div 
-              className="absolute top-0 left-0 w-full bg-white h-full origin-top"
+              className="absolute top-0 left-0 w-full bg-bronze h-full origin-top"
               initial={{ scaleY: 0 }}
               animate={{ scaleY: 1 }}
               transition={{ repeat: Infinity, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             />
           </div>
-          <span className="text-[9px] uppercase tracking-[0.25em] text-ivory/70 rotate-180" style={{ writingMode: 'vertical-rl' }}>Scroll</span>
+          <span className="text-[9px] uppercase tracking-[0.3em] text-ivory/50 rotate-180" style={{ writingMode: 'vertical-rl' }}>Scroll</span>
         </motion.div>
       </div>
     </div>

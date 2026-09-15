@@ -41,18 +41,17 @@ export default function FeaturedResidence() {
               viewport={{ once: true, margin: "-20%" }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-8 h-[1px] bg-charcoal/30"></div>
-                <div className="text-[9px] uppercase tracking-[0.25em] text-charcoal/70 font-semibold">
+              <div className="mb-6">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-bronze font-bold">
                   Featured Residence
-                </div>
+                </span>
               </div>
               
-              <h2 className="font-display text-6xl md:text-[5rem] font-light mb-6 tracking-tighter leading-none">
-                Villa <span className="italic text-charcoal/80">No. 07</span>
+              <h2 className="font-display text-6xl md:text-[5.5rem] font-light mb-6 tracking-tighter leading-[0.9]">
+                Villa <span className="italic font-normal text-charcoal/80">No. 07</span>
               </h2>
               
-              <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] mb-10 text-charcoal/80 font-medium">
+              <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] mb-10 text-charcoal/60 font-semibold">
                 <MapPin size={14} className="text-bronze" strokeWidth={1.5} />
                 Alibaug, Maharashtra
               </div>
@@ -83,12 +82,12 @@ export default function FeaturedResidence() {
               <div className="flex flex-col sm:flex-row items-center gap-5">
                 <Link 
                   href="/properties/villa-no-07" 
-                  className="group relative overflow-hidden bg-charcoal text-white px-10 py-4 text-[10px] uppercase tracking-[0.2em] transition-all duration-500 flex items-center justify-center gap-4 w-full sm:w-auto hover:bg-bronze"
+                  className="group relative overflow-hidden bg-charcoal text-white px-10 py-5 text-[10px] uppercase tracking-[0.2em] transition-all duration-500 flex items-center justify-center gap-4 w-full sm:w-auto hover:bg-bronze"
                 >
-                  <span className="relative z-10 font-semibold">Discover</span>
-                  <ArrowRight size={14} className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-500" />
+                  <span className="relative z-10 font-bold">Discover</span>
+                  <ArrowRight size={14} className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-500" strokeWidth={2} />
                 </Link>
-                <button className="group border border-charcoal/20 px-10 py-4 w-full sm:w-auto flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.2em] hover:border-charcoal transition-all duration-500 font-semibold text-charcoal/80">
+                <button className="group border border-charcoal/20 px-10 py-5 w-full sm:w-auto flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.2em] hover:border-charcoal transition-all duration-500 font-bold text-charcoal/80">
                   <Heart size={14} strokeWidth={1.5} className="group-hover:fill-charcoal group-hover:text-charcoal transition-colors duration-500" /> Save
                 </button>
               </div>

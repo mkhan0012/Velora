@@ -15,18 +15,17 @@ export default function PropertiesGrid() {
         
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
           <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-8 h-[1px] bg-charcoal/30"></div>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-charcoal/60 font-semibold block">Curated Portfolio</span>
+            <div className="mb-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-bronze font-bold block">Curated Portfolio</span>
             </div>
-            <h2 className="font-display text-5xl md:text-6xl font-light text-charcoal tracking-tighter leading-none">
-              Exceptional <span className="italic text-charcoal/80">homes.</span><br />Remarkable <span className="italic text-charcoal/80">lives.</span>
+            <h2 className="font-display text-5xl md:text-[4.5rem] font-light text-charcoal tracking-tighter leading-[0.9]">
+              Exceptional <span className="italic font-normal text-charcoal/80">homes.</span><br />Remarkable <span className="italic font-normal text-charcoal/80">lives.</span>
             </h2>
           </div>
           
           <Link 
             href="/properties" 
-            className="flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-semibold text-charcoal hover:text-bronze transition-colors group pb-2 border-b border-charcoal/20 hover:border-bronze"
+            className="flex items-center gap-4 text-[10px] uppercase tracking-[0.25em] font-bold text-charcoal hover:text-bronze transition-colors group pb-2 border-b border-charcoal/20 hover:border-bronze"
           >
             View Entire Portfolio <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -53,13 +52,13 @@ export default function PropertiesGrid() {
                 </Link>
                 
                 <div className="absolute top-5 left-5 z-10">
-                  <span className="bg-white/90 text-charcoal backdrop-blur-md px-4 py-2 text-[8px] uppercase tracking-[0.25em] font-bold">
+                  <span className="bg-white/95 text-charcoal backdrop-blur-md px-4 py-2 text-[8px] uppercase tracking-[0.3em] font-bold">
                     For Sale
                   </span>
                 </div>
                 
                 <button 
-                  className="absolute top-5 right-5 z-10 text-white/90 hover:text-white transition-colors p-2 bg-charcoal/10 backdrop-blur-md rounded-full"
+                  className="absolute top-5 right-5 z-10 text-white/90 hover:text-white transition-colors p-2 bg-charcoal/20 backdrop-blur-md rounded-full"
                   aria-label="Save property"
                 >
                   <Heart size={16} strokeWidth={1.5} className="group-hover:fill-white/30" />
@@ -70,19 +69,19 @@ export default function PropertiesGrid() {
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col w-full">
                     <div className="flex justify-between items-center mb-2">
-                      <h3 className="font-display text-[22px] font-light text-charcoal tracking-tight group-hover/text:text-bronze transition-colors duration-300">{property.title}</h3>
+                      <h3 className="font-display text-[24px] font-light text-charcoal tracking-tight group-hover/text:text-bronze transition-colors duration-300">{property.title}</h3>
                       <ArrowRight size={14} className="text-bronze opacity-0 -translate-x-4 transition-all duration-500 ease-[0.16,1,0.3,1] group-hover:opacity-100 group-hover:translate-x-0" />
                     </div>
-                    <p className="text-[11px] uppercase tracking-[0.15em] text-charcoal/50 font-medium mb-4">{property.location}</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-4">{property.location}</p>
                     
-                    <div className="flex items-center gap-3 text-[10px] text-charcoal/70 font-semibold tracking-wider mb-5 uppercase">
+                    <div className="flex items-center gap-3 text-[9px] text-charcoal/70 font-bold tracking-[0.2em] mb-5 uppercase">
                       <span>{property.bedrooms} Beds</span>
                       <span className="w-[3px] h-[3px] rounded-full bg-charcoal/20" />
                       <span>{property.bathrooms} Baths</span>
                       <span className="w-[3px] h-[3px] rounded-full bg-charcoal/20" />
                       <span>{property.area}</span>
                     </div>
-                    <span className="font-sans text-[15px] font-medium tracking-wide text-charcoal">{property.price}</span>
+                    <span className="font-sans text-[16px] font-semibold tracking-wide text-charcoal">{property.price}</span>
                   </div>
                 </div>
               </Link>
