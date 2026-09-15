@@ -9,32 +9,30 @@ export default function SearchSection() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"buy" | "rent">("buy");
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push("/properties");
-  };
-
   return (
-    <section className="py-20 bg-[#EFECE6] border-b border-stone/50">
-      <div className="container mx-auto px-6 md:px-12">
+    <section className="py-24 md:py-32 bg-ivory relative border-b border-charcoal/10">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
         
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-10">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-14">
           <div>
-            <span className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold mb-3 block">Discover</span>
-            <h2 className="font-display text-4xl md:text-5xl font-light text-charcoal">
-              Find a place<br />that feels like you.
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-8 h-[1px] bg-charcoal/30"></div>
+              <span className="text-[9px] uppercase tracking-[0.25em] text-charcoal/60 font-semibold block">Discover</span>
+            </div>
+            <h2 className="font-display text-5xl md:text-[4.5rem] font-light text-charcoal tracking-tighter leading-none">
+              Find a <span className="italic text-charcoal/80">place</span><br />that feels like you.
             </h2>
           </div>
           
-          <div className="flex border border-stone/60 p-1 w-full sm:w-auto self-start lg:self-end">
+          <div className="flex border border-charcoal/20 p-1 w-full sm:w-auto self-start lg:self-end">
             <button 
-              className={`flex-1 sm:flex-none px-8 py-3 text-[11px] uppercase tracking-widest font-semibold transition-colors ${activeTab === "buy" ? "bg-bronze text-white" : "text-charcoal hover:bg-stone/50"}`}
+              className={`flex-1 sm:flex-none px-10 py-4 text-[9px] uppercase tracking-[0.25em] font-bold transition-all duration-300 ${activeTab === "buy" ? "bg-charcoal text-white" : "text-charcoal/70 hover:bg-charcoal/5"}`}
               onClick={() => setActiveTab("buy")}
             >
               Buy
             </button>
             <button 
-              className={`flex-1 sm:flex-none px-8 py-3 text-[11px] uppercase tracking-widest font-semibold transition-colors ${activeTab === "rent" ? "bg-bronze text-white" : "text-charcoal hover:bg-stone/50"}`}
+              className={`flex-1 sm:flex-none px-10 py-4 text-[9px] uppercase tracking-[0.25em] font-bold transition-all duration-300 ${activeTab === "rent" ? "bg-charcoal text-white" : "text-charcoal/70 hover:bg-charcoal/5"}`}
               onClick={() => setActiveTab("rent")}
             >
               Rent
@@ -43,10 +41,10 @@ export default function SearchSection() {
         </div>
 
         <motion.form 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           onSubmit={(e) => {
             e.preventDefault();
             const formData = new FormData(e.currentTarget);
@@ -70,27 +68,27 @@ export default function SearchSection() {
 
             router.push(`/properties?${params.toString()}`);
           }}
-          className="flex flex-col lg:flex-row bg-white/40 border border-stone/50 shadow-sm"
+          className="flex flex-col lg:flex-row bg-white/50 backdrop-blur-md border border-charcoal/10"
         >
           {/* Location */}
-          <div className="flex-1 p-6 lg:border-r border-stone/50 relative group cursor-pointer hover:bg-white/60 transition-colors">
-            <div className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold mb-2">Location</div>
-            <div className="flex items-center gap-2">
-              <MapPin size={14} className="text-charcoal" />
+          <div className="flex-1 p-8 lg:border-r border-charcoal/10 relative group cursor-pointer hover:bg-white/80 transition-colors">
+            <div className="text-[9px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-3">Location</div>
+            <div className="flex items-center gap-3">
+              <MapPin size={16} className="text-bronze" strokeWidth={1.5} />
               <input 
                 name="q"
                 type="text" 
                 placeholder="Where do you want to live?" 
-                className="bg-transparent border-none outline-none text-sm font-medium w-full text-charcoal placeholder:text-charcoal/60"
+                className="bg-transparent border-none outline-none text-sm font-medium w-full text-charcoal placeholder:text-charcoal/40"
               />
             </div>
           </div>
 
           {/* Property Type */}
-          <div className="flex-1 p-6 lg:border-r border-b lg:border-b-0 border-t lg:border-t-0 border-stone/50 relative group cursor-pointer hover:bg-white/60 transition-colors flex justify-between items-end">
+          <div className="flex-1 p-8 lg:border-r border-b lg:border-b-0 border-t lg:border-t-0 border-charcoal/10 relative group cursor-pointer hover:bg-white/80 transition-colors flex justify-between items-end">
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold mb-2">Property Type</div>
-              <select name="type" className="bg-transparent border-none outline-none text-sm font-medium text-charcoal cursor-pointer appearance-none">
+              <div className="text-[9px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-3">Property Type</div>
+              <select name="type" className="bg-transparent border-none outline-none text-[15px] font-medium text-charcoal cursor-pointer appearance-none">
                 <option>Any type</option>
                 <option>Villa</option>
                 <option>Apartment</option>
@@ -99,14 +97,14 @@ export default function SearchSection() {
                 <option>Estate</option>
               </select>
             </div>
-            <ChevronDown size={14} className="text-warm-gray mb-1" />
+            <ChevronDown size={14} className="text-charcoal/40 mb-1 group-hover:text-bronze transition-colors" />
           </div>
 
           {/* Budget */}
-          <div className="flex-1 p-6 lg:border-r border-b lg:border-b-0 border-stone/50 relative group cursor-pointer hover:bg-white/60 transition-colors flex justify-between items-end">
+          <div className="flex-1 p-8 lg:border-r border-b lg:border-b-0 border-charcoal/10 relative group cursor-pointer hover:bg-white/80 transition-colors flex justify-between items-end">
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold mb-2">Budget</div>
-              <select name="budget" className="bg-transparent border-none outline-none text-sm font-medium text-charcoal cursor-pointer appearance-none">
+              <div className="text-[9px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-3">Budget</div>
+              <select name="budget" className="bg-transparent border-none outline-none text-[15px] font-medium text-charcoal cursor-pointer appearance-none">
                 <option>Any budget</option>
                 <option>Under ₹5 Cr</option>
                 <option>₹5 Cr - ₹10 Cr</option>
@@ -114,14 +112,14 @@ export default function SearchSection() {
                 <option>Above ₹15 Cr</option>
               </select>
             </div>
-            <ChevronDown size={14} className="text-warm-gray mb-1" />
+            <ChevronDown size={14} className="text-charcoal/40 mb-1 group-hover:text-bronze transition-colors" />
           </div>
 
           {/* Bedrooms */}
-          <div className="flex-1 p-6 relative group cursor-pointer hover:bg-white/60 transition-colors flex justify-between items-end">
+          <div className="flex-1 p-8 relative group cursor-pointer hover:bg-white/80 transition-colors flex justify-between items-end">
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold mb-2">Bedrooms</div>
-              <select name="beds" className="bg-transparent border-none outline-none text-sm font-medium text-charcoal cursor-pointer appearance-none">
+              <div className="text-[9px] uppercase tracking-[0.2em] text-charcoal/50 font-bold mb-3">Bedrooms</div>
+              <select name="beds" className="bg-transparent border-none outline-none text-[15px] font-medium text-charcoal cursor-pointer appearance-none">
                 <option>Any</option>
                 <option>1+</option>
                 <option>2+</option>
@@ -129,16 +127,16 @@ export default function SearchSection() {
                 <option>4+</option>
               </select>
             </div>
-            <ChevronDown size={14} className="text-warm-gray mb-1" />
+            <ChevronDown size={14} className="text-charcoal/40 mb-1 group-hover:text-bronze transition-colors" />
           </div>
 
           {/* Submit Button */}
           <button 
             type="submit"
-            className="bg-bronze text-white px-10 py-6 lg:py-0 text-[11px] uppercase tracking-widest hover:bg-charcoal transition-colors flex items-center justify-center gap-3 group"
+            className="bg-bronze text-white px-12 py-8 lg:py-0 text-[10px] uppercase tracking-[0.25em] font-bold hover:bg-charcoal transition-all duration-500 flex items-center justify-center gap-4 group"
           >
-            Search Properties
-            <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+            <span className="relative z-10">Search</span>
+            <ArrowRight size={14} className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-500" strokeWidth={2} />
           </button>
         </motion.form>
         

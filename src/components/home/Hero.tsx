@@ -25,6 +25,7 @@ export default function Hero() {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % heroImages.length);
@@ -34,11 +35,10 @@ export default function Hero() {
     setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
   };
 
-  // Optional auto-play
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
-    }, 6000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
@@ -47,19 +47,18 @@ export default function Hero() {
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden bg-deep-charcoal flex items-center"
     >
-      {/* Background Image Carousel */}
       <motion.div 
-        style={{ y, opacity }}
-        className="absolute inset-0 w-full h-full"
+        style={{ y, opacity, scale }}
+        className="absolute inset-0 w-full h-full origin-bottom"
       >
         <div className="absolute inset-0 w-full h-full" data-cursor="view">
           <AnimatePresence initial={false}>
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 w-full h-full"
             >
               <Image 
@@ -72,41 +71,43 @@ export default function Hero() {
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/80 via-charcoal/40 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/80 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-charcoal/90 via-charcoal/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/90 via-transparent to-transparent z-10" />
       </motion.div>
 
       <div className="container relative z-20 mx-auto px-6 md:px-12 w-full h-full flex flex-col justify-center">
         
-        <div className="flex flex-col lg:flex-row justify-between items-end w-full h-full pb-24">
+        <div className="flex flex-col lg:flex-row justify-between items-end w-full h-full pb-20">
           
-          {/* Main Content (Left) */}
-          <div className="w-full lg:w-1/2 flex flex-col items-start text-white pt-32">
+          <div className="w-full lg:w-1/2 flex flex-col items-start text-white pt-40">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-[10px] uppercase tracking-[0.25em] font-semibold text-ivory/90 mb-4"
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-4 mb-8"
             >
-              Velora Estates
+              <div className="w-8 h-[1px] bg-bronze"></div>
+              <span className="text-[9px] uppercase tracking-[0.3em] font-semibold text-ivory/80">
+                Velora Estates
+              </span>
             </motion.div>
             
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light leading-[1.05] mb-6 tracking-tight"
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-6xl md:text-8xl lg:text-[6.5rem] font-light leading-[0.95] mb-8 tracking-tighter"
             >
               Spaces that<br />
-              speak for<br />
+              <span className="italic text-ivory/90">speak</span> for<br />
               themselves.
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-ivory/90 max-w-sm text-sm font-light leading-relaxed mb-10"
+              transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="text-ivory/80 max-w-sm text-[13px] font-light leading-relaxed mb-12 tracking-wide"
             >
               Curating exceptional residences for those who appreciate architecture, place and possibility.
             </motion.p>
@@ -114,73 +115,67 @@ export default function Hero() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center"
             >
               <Link 
                 href="/properties" 
-                className="bg-bronze text-white px-8 py-3.5 text-[11px] uppercase tracking-widest hover:bg-white hover:text-bronze transition-all duration-300 flex items-center justify-center sm:justify-start gap-4 group"
+                className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 text-[10px] uppercase tracking-[0.2em] transition-all duration-500 hover:bg-white hover:text-charcoal flex items-center justify-center gap-4 w-full sm:w-auto"
               >
-                Explore Residences
-                <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link 
-                href="/locations" 
-                className="border border-white/40 text-white px-8 py-3.5 text-[11px] uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all duration-300 text-center"
-              >
-                View Locations
+                <span className="relative z-10 font-semibold">Explore Residences</span>
+                <ArrowRight size={14} className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-500" />
               </Link>
             </motion.div>
           </div>
 
-          {/* Right Metadata & Controls */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
+            transition={{ duration: 1.5, delay: 1 }}
             className="hidden lg:flex flex-col items-end text-white text-right"
           >
-            <div className="flex flex-col gap-2 mb-6">
-              <span className="text-[10px] uppercase tracking-widest text-ivory/70 font-semibold">Curated Residences</span>
-              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Mumbai · Goa · Delhi · Bengaluru</span>
+            <div className="flex flex-col gap-3 mb-8">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-ivory/60 font-medium">Curated Residences</span>
+              <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-ivory/90">Mumbai · Goa · Delhi · Bengaluru</span>
             </div>
             
-            <div className="flex items-center gap-4 border-t border-white/20 pt-4 w-64 justify-end">
-              <div className="text-[10px] font-medium tracking-widest mr-4 text-ivory/60">
-                0{currentIndex + 1} / 0{heroImages.length}
+            <div className="flex items-center gap-6 border-t border-white/20 pt-6 w-72 justify-end">
+              <div className="text-[10px] font-medium tracking-[0.2em] mr-auto text-ivory/60">
+                0{currentIndex + 1} &mdash; 0{heroImages.length}
               </div>
-              <MagneticButton 
-                onClick={handlePrev}
-                className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-charcoal transition-colors z-20"
-              >
-                <ArrowLeft size={12} />
-              </MagneticButton>
-              <MagneticButton 
-                onClick={handleNext}
-                className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-charcoal transition-colors z-20"
-              >
-                <ArrowRight size={12} />
-              </MagneticButton>
+              <div className="flex gap-3">
+                <MagneticButton 
+                  onClick={handlePrev}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal transition-all duration-500 z-20 backdrop-blur-sm bg-white/5"
+                >
+                  <ArrowLeft size={14} strokeWidth={1.5} />
+                </MagneticButton>
+                <MagneticButton 
+                  onClick={handleNext}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal transition-all duration-500 z-20 backdrop-blur-sm bg-white/5"
+                >
+                  <ArrowRight size={14} strokeWidth={1.5} />
+                </MagneticButton>
+              </div>
             </div>
           </motion.div>
         </div>
         
-        {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-12 left-6 md:left-12 flex items-center gap-4"
+          transition={{ duration: 1.5, delay: 1.2 }}
+          className="absolute bottom-10 left-6 md:left-12 flex items-center gap-5"
         >
-          <div className="w-8 h-[1px] bg-white/30 relative overflow-hidden">
+          <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
             <motion.div 
-              className="absolute top-0 left-0 w-full bg-white h-full"
-              initial={{ x: "-100%" }}
-              animate={{ x: "100%" }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="absolute top-0 left-0 w-full bg-white h-full origin-top"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             />
           </div>
-          <span className="text-[9px] uppercase tracking-[0.2em] text-ivory/70">Scroll to discover</span>
+          <span className="text-[9px] uppercase tracking-[0.25em] text-ivory/70 rotate-180" style={{ writingMode: 'vertical-rl' }}>Scroll</span>
         </motion.div>
       </div>
     </div>
