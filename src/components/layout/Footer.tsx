@@ -72,7 +72,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] uppercase tracking-widest text-warm-gray">
           <p>© 2026 Velora Estates. All rights reserved.</p>
-          <p>Concept & Digital Experience by Moshin Khan</p>
+          <p>Concept & Digital Experience by Zain Brandhaus</p>
         </div>
       </div>
     </footer>
