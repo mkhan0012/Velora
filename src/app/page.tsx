@@ -1,23 +1,21 @@
 import Hero from "@/components/home/Hero";
 import FeaturedResidence from "@/components/home/FeaturedResidence";
-import SearchSection from "@/components/home/SearchSection";
-import PropertiesGrid from "@/components/home/PropertiesGrid";
+import SearchAndProperties from "@/components/home/SearchAndProperties";
 import LocationsGrid from "@/components/home/LocationsGrid";
-import ArchitectureSection from "@/components/home/ArchitectureSection";
+import IndiaMapSection from "@/components/home/IndiaMapSection";
 import VeloraEdit from "@/components/home/VeloraEdit";
-import LifestyleSection from "@/components/home/LifestyleSection";
+import PrivateClientSection from "@/components/home/PrivateClientSection";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <FeaturedResidence />
-      <SearchSection />
-      <PropertiesGrid />
+      <SearchAndProperties />
       <LocationsGrid />
-      <ArchitectureSection />
+      <IndiaMapSection />
       <VeloraEdit />
-      <LifestyleSection />
+      <PrivateClientSection />
     </>
   );
 }

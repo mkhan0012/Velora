@@ -86,13 +86,10 @@ export default function Navbar() {
               <Search size={16} strokeWidth={1.5} />
             </button>
             
-            <Link href="/saved" className="hover:opacity-70 transition-opacity p-2 relative" aria-label="Saved Properties">
+            <Link href="/saved" className="hover:opacity-70 transition-opacity flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold" aria-label="Saved Properties">
               <Heart size={16} strokeWidth={1.5} />
-              {savedCount > 0 && (
-                <span className="absolute top-0 right-0 w-4 h-4 bg-bronze text-white text-[9px] rounded-full flex items-center justify-center translate-x-1 -translate-y-1">
-                  {savedCount}
-                </span>
-              )}
+              <span className="hidden xl:inline-block">Collection {savedCount > 0 && String(savedCount).padStart(2, '0')}</span>
+              {savedCount > 0 && <span className="xl:hidden inline-block">{String(savedCount).padStart(2, '0')}</span>}
             </Link>
             
             <Link 
@@ -174,7 +171,7 @@ export default function Navbar() {
               className="flex justify-between items-end border-t border-charcoal/10 pt-8 mt-12"
             >
               <Link href="/saved" className="flex items-center gap-2 uppercase tracking-[0.2em] text-[10px] font-semibold hover:text-bronze transition-colors" onClick={() => setIsMenuOpen(false)}>
-                <Heart size={14} strokeWidth={1.5} /> Saved ({savedCount})
+                <Heart size={14} strokeWidth={1.5} /> COLLECTION {savedCount > 0 ? String(savedCount).padStart(2, '0') : ''}
               </Link>
               <div className="text-[10px] uppercase tracking-[0.25em] text-charcoal/50 font-medium">
                 Velora Estates &copy; 2026

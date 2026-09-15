@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { properties } from "@/data/properties";
 import { useSavedProperties } from "@/hooks/useSavedProperties";
+import FullscreenGallery from "@/components/ui/FullscreenGallery";
+import PrivateViewingModal from "@/components/ui/PrivateViewingModal";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -185,7 +187,7 @@ export default function PropertyDetail() {
           <div className="lg:col-span-7">
             <h2 className="text-xs uppercase tracking-widest text-warm-gray mb-8">The Residence</h2>
             <div className="font-display text-3xl md:text-4xl leading-snug font-light text-charcoal mb-8">
-              A masterclass in contemporary design, this {property.type.toLowerCase()} offers an unparalleled living experience characterized by vast open spaces, natural light, and a seamless connection to its surroundings.
+              {property.description || `A masterclass in contemporary design, this ${property.type.toLowerCase()} offers an unparalleled living experience characterized by vast open spaces, natural light, and a seamless connection to its surroundings.`}
             </div>
             <p className="text-warm-gray leading-relaxed mb-8 font-light">
               Every detail has been considered—from the bespoke material palette of warm woods and textured stone to the carefully framed views of the landscape. The fluid layout encourages both grand entertaining and quiet moments of retreat, making it not just a striking architectural achievement, but a profoundly comfortable home.
@@ -224,6 +226,51 @@ export default function PropertyDetail() {
                 <span className="font-medium text-sm">2024</span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Asymmetrical Editorial Sections */}
+        <div className="flex flex-col gap-32 mb-32">
+          {/* Architecture */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-7 h-[60vh] relative bg-stone">
+              <Image src={allImages[0]} alt="Architecture" fill className="object-cover" />
+            </div>
+            <div className="md:col-span-4 md:col-start-9 flex flex-col justify-center">
+              <span className="text-[10px] uppercase tracking-widest text-warm-gray mb-4 border-b border-stone pb-2 inline-block w-max">01 Architecture</span>
+              <h3 className="font-display text-3xl mb-6">Designed around light, landscape and privacy.</h3>
+              <p className="text-warm-gray text-sm leading-relaxed">
+                The striking exterior is softened by warm timber screens and lush landscaping. Open-plan living areas blur the boundary between indoors and out, creating a space that breathes with its environment.
+              </p>
+            </div>
+          </div>
+
+          {/* Interiors */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-4 md:col-start-1 flex flex-col justify-center order-2 md:order-1">
+              <span className="text-[10px] uppercase tracking-widest text-warm-gray mb-4 border-b border-stone pb-2 inline-block w-max">02 Interiors</span>
+              <h3 className="font-display text-3xl mb-6">A quiet, sophisticated atmosphere.</h3>
+              <p className="text-warm-gray text-sm leading-relaxed">
+                The interior palette of travertine, smoked oak, and brushed bronze creates a feeling of understated luxury. Custom joinery and high-end finishes are standard throughout.
+              </p>
+            </div>
+            <div className="md:col-span-7 md:col-start-6 h-[60vh] relative bg-stone order-1 md:order-2">
+              <Image src={allImages[1 % allImages.length]} alt="Interiors" fill className="object-cover" />
+            </div>
+          </div>
+
+          {/* Landscape */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-6 h-[70vh] relative bg-stone">
+              <Image src={allImages[2 % allImages.length]} alt="Landscape" fill className="object-cover" />
+            </div>
+            <div className="md:col-span-4 md:col-start-8 flex flex-col justify-center">
+              <span className="text-[10px] uppercase tracking-widest text-warm-gray mb-4 border-b border-stone pb-2 inline-block w-max">03 Landscape</span>
+              <h3 className="font-display text-3xl mb-6">In conversation with nature.</h3>
+              <p className="text-warm-gray text-sm leading-relaxed">
+                Mature boundary trees ensure immediate privacy, while a reflective water body and central courtyard provide a serene focus for the home's introverted architecture.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -312,153 +359,18 @@ export default function PropertyDetail() {
 
       </div>
 
-      {/* Full Screen Gallery */}
-      <AnimatePresence>
-        {isGalleryOpen && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-deep-charcoal flex items-center justify-center"
-          >
-            <div className="absolute top-6 right-6 z-50 flex items-center gap-6 text-white/50">
-              <span className="font-display text-sm tracking-widest">{currentImageIndex + 1} / {allImages.length}</span>
-              <button 
-                onClick={() => setIsGalleryOpen(false)}
-                className="hover:text-white transition-colors"
-              >
-                <X size={28} strokeWidth={1} />
-              </button>
-            </div>
-            
-            <button 
-              onClick={handlePrevImage}
-              className="absolute left-6 top-1/2 -translate-y-1/2 z-50 text-white/50 hover:text-white transition-colors p-4"
-            >
-              <ChevronLeft size={40} strokeWidth={1} />
-            </button>
-            
-            <button 
-              onClick={handleNextImage}
-              className="absolute right-6 top-1/2 -translate-y-1/2 z-50 text-white/50 hover:text-white transition-colors p-4"
-            >
-              <ChevronRight size={40} strokeWidth={1} />
-            </button>
+      <FullscreenGallery 
+        isOpen={isGalleryOpen}
+        onClose={() => setIsGalleryOpen(false)}
+        images={allImages}
+        initialIndex={currentImageIndex}
+      />
 
-            <motion.div 
-              key={currentImageIndex}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative w-[90vw] h-[85vh]"
-            >
-              <Image 
-                src={allImages[currentImageIndex]} 
-                alt={`${property.title} gallery image`}
-                fill
-                className="object-contain"
-                sizes="90vw"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Schedule Viewing Modal */}
-      <AnimatePresence>
-        {isViewingModalOpen && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
-          >
-            <div className="absolute inset-0 bg-deep-charcoal/80 backdrop-blur-sm" onClick={() => setIsViewingModalOpen(false)} />
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.98, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98, y: 20 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-full max-w-2xl bg-ivory shadow-2xl overflow-hidden"
-            >
-              <button 
-                onClick={() => setIsViewingModalOpen(false)}
-                className="absolute top-6 right-6 text-warm-gray hover:text-charcoal z-10"
-              >
-                <X size={24} strokeWidth={1.5} />
-              </button>
-
-              <div className="p-10 md:p-16">
-                {!viewingSubmitted ? (
-                  <>
-                    <h2 className="font-display text-4xl mb-2">Arrange a private viewing.</h2>
-                    <p className="text-warm-gray text-sm mb-10">Please provide your details below and a Velora representative will contact you to confirm the appointment.</p>
-                    
-                    <form onSubmit={handleViewingSubmit} className="flex flex-col gap-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold">Name</label>
-                          <input required type="text" className="border-b border-stone bg-transparent p-2 outline-none focus:border-charcoal transition-colors font-medium text-sm" />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold">Phone</label>
-                          <input required type="tel" className="border-b border-stone bg-transparent p-2 outline-none focus:border-charcoal transition-colors font-medium text-sm" />
-                        </div>
-                      </div>
-                      
-                      <div className="flex flex-col gap-2">
-                        <label className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold">Email</label>
-                        <input required type="email" className="border-b border-stone bg-transparent p-2 outline-none focus:border-charcoal transition-colors font-medium text-sm" />
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold">Preferred Date</label>
-                          <input required type="date" className="border-b border-stone bg-transparent p-2 outline-none focus:border-charcoal transition-colors font-medium text-sm text-warm-gray" />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold">Preferred Time</label>
-                          <select required className="border-b border-stone bg-transparent p-2 outline-none focus:border-charcoal transition-colors font-medium text-sm text-warm-gray">
-                            <option value="">Select a time</option>
-                            <option value="morning">Morning (9AM - 12PM)</option>
-                            <option value="afternoon">Afternoon (12PM - 4PM)</option>
-                            <option value="evening">Evening (4PM - 7PM)</option>
-                          </select>
-                        </div>
-                      </div>
-                      
-                      <div className="flex flex-col gap-2 mb-4">
-                        <label className="text-[10px] uppercase tracking-widest text-warm-gray font-semibold">Message (Optional)</label>
-                        <textarea rows={2} className="border-b border-stone bg-transparent p-2 outline-none focus:border-charcoal transition-colors font-medium text-sm resize-none"></textarea>
-                      </div>
-
-                      <button type="submit" className="bg-charcoal text-white py-4 text-xs uppercase tracking-widest hover:bg-bronze transition-colors flex justify-center items-center gap-2 group">
-                        Request Viewing 
-                        <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </form>
-                  </>
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    className="flex flex-col items-center justify-center text-center py-12"
-                  >
-                    <div className="w-16 h-16 rounded-full border border-bronze flex items-center justify-center text-bronze mb-8">
-                      <Check size={32} strokeWidth={1} />
-                    </div>
-                    <h2 className="font-display text-4xl mb-4">Thank you.</h2>
-                    <p className="text-warm-gray font-light max-w-sm">A Velora representative will be in touch shortly to confirm your viewing for {property.title}.</p>
-                  </motion.div>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <PrivateViewingModal 
+        isOpen={isViewingModalOpen}
+        onClose={() => setIsViewingModalOpen(false)}
+        property={property}
+      />
 
     </div>
   );
